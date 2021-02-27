@@ -25,7 +25,32 @@
 }
 
 @layer components {
+	/*! purgecss start ignore */
+	
+	/* square colors */
+	.white-1e1d7{background-color:#b0b9b4;}
+	.black-3c85d{background-color:#6d8873;}
 
+	/*highlight color*/
+	.highlight1-32417, .highlight2-9c5d2 {
+		box-shadow: none;
+		border: 2px solid #fff;
+	}
+
+	/*captured pieces*/
+	.captured-piece {
+		@apply w-12 m-2 inline;
+	}
+
+	/*! purgecss end ignore */
+
+	/* inputs, buttons */
+	input[type=text], textarea {
+		@apply border-2 border-gray-300 p-2;
+	}
+	button {
+		@apply bg-gray-100 hover:bg-gray-200 p-2 m-2 rounded;
+	}
 }
 
 @media (min-width: 640px) { /* sm */

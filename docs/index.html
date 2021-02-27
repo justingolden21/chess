@@ -30,7 +30,18 @@
 <body class="text-center m-2 text-gray-900">
 	<section>
 		<h1>Chess</h1>
-		<div id="board" style="width: 400px">
+		<div id="board" class="w-96 mx-auto m-4"></div>
+		<p><span id="turn"></span>'s turn</p>
+		<button id="new-game-btn">New game</button>
+		<button id="undo-btn">Undo</button>
+		<br>
+		fen <input id="fen" type="text">
+		pgn <input id="pgn" type="text">
+		history <textarea id="history"></textarea>
+		<div id="captured-pieces"></div>
+		<!-- todo: timer -->
+		<!-- todo: update colors and piece icons -->
+		<!-- load FEN option -->
 	</section>
 </body>
 </html>
