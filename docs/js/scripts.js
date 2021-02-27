@@ -48,7 +48,7 @@ window.onload = ()=> {
 
 		$('#fen').html(game.fen());
 		$('#pgn').html(game.pgn());
-		$('#history').val(game.history());
+		$('#history').val(game.history().join('\n'));
 		$('#turn').html(game.turn()=='w'?'White':'Black');
 
 		displayCapturedPieces();
@@ -69,5 +69,9 @@ window.onload = ()=> {
 		// dropOffBoard: 'trash',
 		// sparePieces: true,
 	});
+
+	// testing:
+	// game.load('4r3/8/2p2PPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
+
 	update();
 }

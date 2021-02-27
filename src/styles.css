@@ -37,9 +37,15 @@
 		border: 2px solid #fff;
 	}
 
+	/*notation*/
+	.white-1e1d7, .black-3c85d {
+		@apply text-white font-bold;
+
+	}
+
 	/*captured pieces*/
 	.captured-piece {
-		@apply w-12 inline;
+		@apply w-8 -m-2 mt-2 inline;
 	}
 
 	/*! purgecss end ignore */
@@ -50,6 +56,9 @@
 	}
 	button {
 		@apply bg-gray-200 hover:bg-gray-300 p-2 m-2 rounded;
+	}
+	button svg {
+		display: inline;
 	}
 }
 
