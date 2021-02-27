@@ -14,7 +14,7 @@ Production: `npm run build`
 
 ### Links
 
-- Live demo: https://justingolden.me/chess
+- Live demo: https://justingolden.me/Chess
 
 - This repo: https://github.com/justingolden21/chess
 
