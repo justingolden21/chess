@@ -39,7 +39,7 @@
 
 	/*captured pieces*/
 	.captured-piece {
-		@apply w-12 m-2 inline;
+		@apply w-12 inline;
 	}
 
 	/*! purgecss end ignore */
@@ -49,7 +49,7 @@
 		@apply border-2 border-gray-300 p-2;
 	}
 	button {
-		@apply bg-gray-100 hover:bg-gray-200 p-2 m-2 rounded;
+		@apply bg-gray-200 hover:bg-gray-300 p-2 m-2 rounded;
 	}
 }
 

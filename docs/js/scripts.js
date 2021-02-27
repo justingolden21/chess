@@ -1,7 +1,7 @@
-// https://chessboardjs.com/examples#5001
+let board = null;
+let game = new Chess();
+
 window.onload = ()=> {
-	let board = null;
-	let game = new Chess();
 
 	$('#new-game-btn').click( ()=> {
 		game = new Chess();
@@ -46,65 +46,13 @@ window.onload = ()=> {
 			console.log('oh no'); // TODO
 		}
 
-		$('#fen').val(game.fen());
-		$('#pgn').val(game.pgn());
+		$('#fen').html(game.fen());
+		$('#pgn').html(game.pgn());
 		$('#history').val(game.history());
 		$('#turn').html(game.turn()=='w'?'White':'Black');
 
-		// given FEN string, display captured pieces
-		let pieces = game.fen().split(' ')[0].replace(/[\/,0-9]/g, '');
-		let capturedPieces = 'rnbqkbnrppppppppPPPPPPPPRNBQKBNR'.split('');
-		$('#captured-pieces').html('');
-		for(let piece of pieces) {
-			let idx = capturedPieces.indexOf(piece);
-			capturedPieces.splice(idx, 1);
-		}
-		const isUppercase = c => c == c.toUpperCase();
-		for(let piece of capturedPieces) {
-			let str = (isUppercase(piece) ? 'w' : 'b') + piece.toUpperCase();
-			$('#captured-pieces').append(`<img class="captured-piece" src="https://chessboardjs.com/img/chesspieces/alpha/${str}.png">`);
-		}
+		displayCapturedPieces();
 	}
-
-	// -------- hover possible moves --------
-
-
-	let whiteSquareGrey = '#a9a9a9';
-	let blackSquareGrey = '#696969';
-
-	function removeGreySquares() {
-		$('#board .square-55d63').css('background', '');
-	}
-
-	function greySquare(square) {
-		let $square = $('#board .square-' + square);
-		$square.css('background', $square.hasClass('black-3c85d') ? blackSquareGrey : whiteSquareGrey);
-	}
-
-
-	function onMouseoverSquare(square, piece) {
-		// get list of possible moves for this square
-		let moves = game.moves({
-			square: square,
-			verbose: true
-		});
-
-		// exit if there are no moves available for this square
-		if (moves.length === 0) return;
-
-		// highlight the square they moused over
-		greySquare(square);
-
-		// highlight the possible squares for this piece
-		for(let i = 0; i < moves.length; i++) {
-			greySquare(moves[i].to);
-		}
-	}
-
-	function onMouseoutSquare(square, piece) {
-		removeGreySquares();
-	}
-
 
 	board = Chessboard('board', {
 		// showNotation: false, // TODO: setting
@@ -122,5 +70,4 @@ window.onload = ()=> {
 		// sparePieces: true,
 	});
 	update();
-
 }

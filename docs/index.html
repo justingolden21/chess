@@ -26,6 +26,8 @@
 
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/scripts.js"></script>
+	<script src="js/captured-pieces.js"></script>
+	<script src="js/hover-moves.js"></script>
 </head>
 <body class="text-center m-2 text-gray-900">
 	<section>
@@ -35,13 +37,18 @@
 		<button id="new-game-btn">New game</button>
 		<button id="undo-btn">Undo</button>
 		<br>
-		fen <input id="fen" type="text">
-		pgn <input id="pgn" type="text">
+		<p>FEN: <span id="fen"></span></p>
+		<p>PGN: <span id="pgn"></span></p>
+		<!-- todo: copy btns -->
 		history <textarea id="history"></textarea>
 		<div id="captured-pieces"></div>
 		<!-- todo: timer -->
 		<!-- todo: update colors and piece icons -->
 		<!-- load FEN option -->
+		<!-- btn to rotate board -->
+		<!-- btn for how to play -->
+		<!-- add puzzles? -->
+		<!-- load game and go forward and backward moves (game viewer mode, arrow keys) -->
 	</section>
 </body>
 </html>
