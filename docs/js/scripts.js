@@ -1,54 +1,53 @@
 // https://chessboardjs.com/examples#5001
 window.onload = ()=> {
-	var board = null
-	var game = new Chess()
+	let board = null;
+	let game = new Chess();
 
-	function onDragStart (source, piece, position, orientation) {
+	function onDragStart(source, piece, position, orientation) {
 		// do not pick up pieces if the game is over
-		if (game.game_over()) return false
+		if(game.game_over()) return false;
 
 		// only pick up pieces for White
-		if (piece.search(/^b/) !== -1) return false
+		if(piece.search(/^b/) !== -1) return false;
 	}
 
 	function makeRandomMove () {
-		var possibleMoves = game.moves()
+		let possibleMoves = game.moves();
 
 		// game over
-		if (possibleMoves.length === 0) return
+		if (possibleMoves.length === 0) return;
 
-		var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-		game.move(possibleMoves[randomIdx])
-		board.position(game.fen())
+		let randomIdx = Math.floor(Math.random() * possibleMoves.length);
+		game.move(possibleMoves[randomIdx]);
+		board.position(game.fen());
 	}
 
 	function onDrop (source, target) {
 		// see if the move is legal
-		var move = game.move({
-		from: source,
-		to: target,
-		promotion: 'q' // NOTE: always promote to a queen for example simplicity
-		})
+		let move = game.move({
+			from: source,
+			to: target,
+			promotion: 'q' // NOTE: always promote to a queen for example simplicity
+		});
 
 		// illegal move
-		if (move === null) return 'snapback'
+		if (move === null) return 'snapback';
 
 		// make random legal move for black
-		window.setTimeout(makeRandomMove, 250)
+		window.setTimeout(makeRandomMove, 250);
 	}
 
 	// update the board position after the piece snap
 	// for castling, en passant, pawn promotion
 	function onSnapEnd () {
-		board.position(game.fen())
+		board.position(game.fen());
 	}
 
-	var config = {
+	board = Chessboard('board', {
 		draggable: true,
 		position: 'start',
 		onDragStart: onDragStart,
 		onDrop: onDrop,
 		onSnapEnd: onSnapEnd
-	}
-	board = Chessboard('board', config)
+	});
 }
