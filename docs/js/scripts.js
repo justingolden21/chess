@@ -57,7 +57,6 @@ window.onload = ()=> {
 		$('#captured-pieces').html('');
 		for(let piece of pieces) {
 			let idx = capturedPieces.indexOf(piece);
-			console.log(idx);
 			capturedPieces.splice(idx, 1);
 		}
 		const isUppercase = c => c == c.toUpperCase();
