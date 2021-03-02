@@ -1,8 +1,12 @@
 # Chess
 
+https://justingolden.me/Chess
+
 ### About
 
-a simple chess project using chess.js and chessboard.js
+A simple chess project using chess.js and chessboard.js
+
+Using icons from HeroIcons and FontAwesome. Built with TailwindCSS and using tailwind colors.
 
 ### Development
 
@@ -14,7 +18,6 @@ Production: `npm run build`
 
 ### Links
 
-- Live demo: https://justingolden.me/Chess
 
 - This repo: https://github.com/justingolden21/chess
 

@@ -1,5 +1,5 @@
-const whiteSquareGrey = '#a9a9a9';
-const blackSquareGrey = '#696969';
+const whiteSquareGrey = '#64748B'; // 500
+const blackSquareGrey = '#1E293B'; // 800
 
 function removeGreySquares() {
 	$('#board .square-55d63').css('background', '');

@@ -3,13 +3,19 @@ let game = new Chess();
 
 window.onload = ()=> {
 
-	$('#new-game-btn').click( ()=> {
+	$('#new-game-btn').click(()=> {
 		game = new Chess();
 		update();
 	});
-	$('#undo-btn').click( ()=> {
+	$('#undo-btn').click(()=> {
 		game.undo();
 		update();
+	});
+
+	$('#rotate-toggle').change(()=> {
+		if($('#rotate-toggle').is(':checked')) {
+			board.orientation(game.turn()=='b'?'black':'white');
+		}
 	});
 
 	function onDragStart(source, piece, position, orientation) {
@@ -38,8 +44,9 @@ window.onload = ()=> {
 	}
 
 	function update() {
-		// todo: add rotate setting toggle, default false
-		// board.orientation(game.turn()=='b'?'black':'white');
+		if($('#rotate-toggle').is(':checked')) {
+			board.orientation(game.turn()=='b'?'black':'white');
+		}
 		board.position(game.fen());
 
 		if(game.game_over()) {
@@ -63,7 +70,7 @@ window.onload = ()=> {
 		onSnapEnd: onSnapEnd,
 		onMouseoutSquare: onMouseoutSquare,
 		onMouseoverSquare: onMouseoverSquare,
-		pieceTheme: 'https://chessboardjs.com/img/chesspieces/alpha/{piece}.png',
+		pieceTheme: 'img/pieces/{piece}.svg',
 
 		// todo: option for fun sandbox settings
 		// dropOffBoard: 'trash',

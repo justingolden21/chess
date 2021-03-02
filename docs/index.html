@@ -24,12 +24,19 @@
 		integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz"
 		crossorigin="anonymous"></script>
 
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+		crossorigin="anonymous">
+
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/scripts.js"></script>
 	<script src="js/captured-pieces.js"></script>
 	<script src="js/hover-moves.js"></script>
+	<script src="js/components/toggle.js"></script>
+	<script src="js/components/modal.js"></script>
 </head>
-<body class="text-center m-2 md:m-4 text-gray-900">
+<body class="text-center text-bluegray-900 m-2 md:m-4">
 	<section>
 		<h1><small>pass the phone</small> <b>Chess</b></h1>
 		<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
@@ -39,7 +46,7 @@
 				<label for="history" class="block mb-2 text-left">History:</label>
 				<textarea id="history" class="w-full"></textarea>
 				<label class="block mb-2 text-left">Captured:</label>
-				<div id="captured-pieces" class="bg-gray-200 rounded p-4 my-2"></div>
+				<div id="captured-pieces" class="rounded p-4 my-2"></div>
 			</div>
 		</div>
 		<button id="new-game-btn">
@@ -50,11 +57,14 @@
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
 			Undo
 		</button>
+		<button class="modal-btn" href="#settings-modal">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+			Settings
+		</button>
 		<hr class="my-4">
-		<p><b>FEN:</b> <span id="fen"></span></p>
-		<p><b>PGN:</b> <span id="pgn"></span></p>
+		<p><b>FEN:</b><br> <span id="fen"></span></p>
+		<p><b>PGN:</b><br> <span id="pgn"></span></p>
 		<!-- todo: copy btns -->
-
 		<!-- todo: timer -->
 		<!-- todo: update colors and piece icons -->
 		<!-- load FEN option -->
@@ -63,7 +73,27 @@
 		<!-- add puzzles? -->
 		<!-- load game and go forward and backward moves (game viewer mode, arrow keys) -->
 		<!-- resign/offer draw option, games history option, download games, share FEN buttons -->
+		<!-- toggle for show notation in settings -->
 		<!-- fullscreen, contact, about, etc buttons -->
+
+		<div id="settings-modal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="btn sm close hover-fill">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+					<h1>Settings</h1>
+				</div>
+				<div class="modal-body">
+					<div class="toggle-container">
+					<input type="checkbox" id="rotate-toggle" class="toggle-checkbox"/>
+					<label class="toggle-bg"></label>
+				</div>
+				<label for="rotate-toggle" class="toggle-label">Rotate board after each move</label>
+				</div>
+			</div>
+		</div>
+
 	</section>
 </body>
 </html>
