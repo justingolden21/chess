@@ -26,10 +26,22 @@
 
 @layer components {
 	/*! purgecss start ignore */
+
+	#board {
+		touch-action: none;
+	}
+	.board-b72b1 {
+		border: 0;
+		box-shadow: 0.5rem 0.5rem 0px #18181B; /*gray 900*/
+	}
 	
 	/* square colors */
-	.white-1e1d7{background-color:#b0b9b4;}
-	.black-3c85d{background-color:#6d8873;}
+	.white-1e1d7 {
+		background-color:#CBD5E1; /*blue gray 300*/
+	}
+	.black-3c85d {
+		background-color:#475569; /*blue gray 600*/
+	}
 
 	/*highlight color*/
 	.highlight1-32417, .highlight2-9c5d2 {
@@ -39,13 +51,18 @@
 
 	/*notation*/
 	.white-1e1d7, .black-3c85d {
-		@apply text-white font-bold;
-
+		font-weight: bold;
+	}
+	.white-1e1d7 {
+		@apply text-gray-600;
+	}
+	.black-3c85d {
+		@apply text-gray-300;
 	}
 
 	/*captured pieces*/
 	.captured-piece {
-		@apply w-8 -m-2 mt-2 inline;
+		@apply w-8 -m-2 my-1 inline;
 	}
 
 	/*! purgecss end ignore */

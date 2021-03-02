@@ -29,18 +29,19 @@
 	<script src="js/captured-pieces.js"></script>
 	<script src="js/hover-moves.js"></script>
 </head>
-<body class="text-center m-2 text-gray-900">
+<body class="text-center m-2 md:m-4 text-gray-900">
 	<section>
-		<h1>Chess</h1>
+		<h1><small>pass the phone</small> <b>Chess</b></h1>
 		<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
 			<div id="board" class="sm:col-span-2 md:col-span-3 w-96 mx-auto m-4"></div>
-			<div class="sm:text-left">
-				<label for="history" class="block">History:</label>
-				<textarea id="history"></textarea>
-				<div id="captured-pieces"></div>
-			</div>		
+			<div class="mx-4">
+				<p class="font-bold"><span id="turn"></span>'s turn</p>
+				<label for="history" class="block mb-2 text-left">History:</label>
+				<textarea id="history" class="w-full"></textarea>
+				<label class="block mb-2 text-left">Captured:</label>
+				<div id="captured-pieces" class="bg-gray-200 rounded p-4 my-2"></div>
+			</div>
 		</div>
-		<p><span id="turn"></span>'s turn</p>
 		<button id="new-game-btn">
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
 			New game
@@ -49,9 +50,9 @@
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
 			Undo
 		</button>
-		<hr class="my-2">
-		<p>FEN: <span id="fen"></span></p>
-		<p>PGN: <span id="pgn"></span></p>
+		<hr class="my-4">
+		<p><b>FEN:</b> <span id="fen"></span></p>
+		<p><b>PGN:</b> <span id="pgn"></span></p>
 		<!-- todo: copy btns -->
 
 		<!-- todo: timer -->
@@ -61,6 +62,8 @@
 		<!-- btn for how to play -->
 		<!-- add puzzles? -->
 		<!-- load game and go forward and backward moves (game viewer mode, arrow keys) -->
+		<!-- resign/offer draw option, games history option, download games, share FEN buttons -->
+		<!-- fullscreen, contact, about, etc buttons -->
 	</section>
 </body>
 </html>
