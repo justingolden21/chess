@@ -35,8 +35,7 @@ window.onload = ()=> {
 
 		if(move && move.promotion) {
 			game.undo();
-			openModal('Promote a Pawn', '<button onclick="promote(\''+source+'\',\''+target+'\',\'n\')">Knight</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'b\')">Bishop</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'r\')">Rook</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'q\')">Queen</button> ');
-			console.log('TODO');
+			openModal('Promote a Pawn', '<button onclick="promote(\''+source+'\',\''+target+'\',\'n\')">Knight</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'b\')">Bishop</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'r\')">Rook</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'q\')">Queen</button>');
 		}
 
 		// illegal move
