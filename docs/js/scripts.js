@@ -30,8 +30,14 @@ window.onload = ()=> {
 		let move = game.move({
 			from: source,
 			to: target,
-			promotion: 'q' // NOTE: always promote to a queen for example simplicity
+			promotion: 'q' // test promotion, will undo and prompt if is promotion
 		});
+
+		if(move && move.promotion) {
+			game.undo();
+			openModal('Promote a Pawn', '<button onclick="promote(\''+source+'\',\''+target+'\',\'n\')">Knight</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'b\')">Bishop</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'r\')">Rook</button> <button onclick="promote(\''+source+'\',\''+target+'\',\'q\')">Queen</button> ');
+			console.log('TODO');
+		}
 
 		// illegal move
 		if(move === null) return 'snapback';
@@ -43,25 +49,7 @@ window.onload = ()=> {
 		update();
 	}
 
-	function update() {
-		if($('#rotate-toggle').is(':checked')) {
-			board.orientation(game.turn()=='b'?'black':'white');
-		}
-		board.position(game.fen());
-
-		if(game.game_over()) {
-			console.log('oh no'); // TODO
-		}
-
-		$('#fen').html(game.fen());
-		$('#pgn').html(game.pgn());
-		$('#history').val(game.history().join('\n'));
-		$('#turn').html(game.turn()=='w'?'White':'Black');
-
-		displayCapturedPieces();
-	}
-
-	board = Chessboard('board', {
+	let config = {
 		// showNotation: false, // TODO: setting
 		draggable: true,
 		position: 'start',
@@ -75,10 +63,43 @@ window.onload = ()=> {
 		// todo: option for fun sandbox settings
 		// dropOffBoard: 'trash',
 		// sparePieces: true,
-	});
+	};
+	board = Chessboard('board', config);
 
 	// testing:
 	// game.load('4r3/8/2p2PPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
 
+	update();
+}
+
+function update() {
+	if($('#rotate-toggle').is(':checked')) {
+		board.orientation(game.turn()=='b'?'black':'white');
+	}
+	board.position(game.fen());
+
+	if(game.game_over()) {
+		const state = game.in_checkmate() ? (game.turn() == 'w' ? 'Black' : 'White') + ' wins by checkmate' : game.insufficient_material() ? 'Draw - Insufficient Material' : game.in_threefold_repetition() ? 'Draw - Threefold Repetition' : game.in_draw() ? 'Draw - 50-Move Rule' : game.in_stalemate() ? 'Draw - Stalemate' : 'Game Over';
+		openModal('Game Over', state);
+		$('#state').html(state);
+	} else {
+		$('#state').html('');
+	}
+
+	$('#fen').html(game.fen());
+	$('#pgn').html(game.pgn());
+	$('#history').val(game.history().join('\n'));
+	$('#turn').html(game.turn()=='w'?'White':'Black');
+
+	displayCapturedPieces();
+}
+
+function promote(source, target, promotion) {
+	$('#modal').css('display','none');
+	game.move({
+		from: source,
+		to: target,
+		promotion: promotion
+	});
 	update();
 }

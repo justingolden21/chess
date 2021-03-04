@@ -31,6 +31,7 @@
 
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/scripts.js"></script>
+	<script src="js/util.js"></script>
 	<script src="js/captured-pieces.js"></script>
 	<script src="js/hover-moves.js"></script>
 	<script src="js/components/toggle.js"></script>
@@ -43,6 +44,7 @@
 			<div id="board" class="sm:col-span-2 md:col-span-3 w-96 mx-auto m-4"></div>
 			<div class="mx-4">
 				<p class="font-bold"><span id="turn"></span>'s turn</p>
+				<p id="state" class="font-bold"></p>
 				<label for="history" class="block mb-2 text-left">History:</label>
 				<textarea id="history" class="w-full"></textarea>
 				<label class="block mb-2 text-left">Captured:</label>
@@ -76,6 +78,7 @@
 		<!-- toggle for show notation in settings -->
 		<!-- fullscreen, contact, about, etc buttons -->
 		<!-- download, upload, copy, share, url param for FEN or PGN (position/entire game history) -->
+		<!-- todo: chess: click to move (not drag) redo option, modal scroll down problems, sandbox mode -->
 
 		<div id="settings-modal" class="modal">
 			<div class="modal-content">
@@ -91,6 +94,19 @@
 						<label class="toggle-bg"></label>
 					</div>
 					<label for="rotate-toggle" class="toggle-label">Rotate board after each move</label>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="btn sm close hover-fill">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+					<h1 id="modal-title"></h1>
+				</div>
+				<div id="modal-body" class="modal-body">
 				</div>
 			</div>
 		</div>
