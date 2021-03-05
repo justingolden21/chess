@@ -15,12 +15,13 @@ $(()=> {
 	$('#rotate-toggle').change(()=> {
 		if($('#rotate-toggle').is(':checked')) {
 			board.orientation(game.turn()=='b'?'black':'white');
+		} else {
+			board.orientation('white');
 		}
 	});
 	$('#notation-toggle').change(()=> {
 		$('.white-1e1d7, .black-3c85d').css('color', $('#notation-toggle').is(':checked') ? '' : 'transparent');
 	});
-	setTimeout(()=> $('#notation-toggle').change());
 
 	$('#copy-fen').click(()=> {
 		$('#fen').select();
@@ -82,7 +83,6 @@ $(()=> {
 	}
 
 	let config = {
-		// showNotation: false, // TODO: setting
 		draggable: true,
 		position: 'start',
 		onDragStart: onDragStart,
@@ -102,6 +102,12 @@ $(()=> {
 	// game.load('4r3/8/2p2PPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
 
 	update();
+
+	$('#notation-toggle').change();
+
+	// note: just make a new modal with code from https://chessboardjs.com/examples#2006
+	// inside and have a separate board for sandbox (maybe later load fen/pgn in sandbox? have input below and btn?)
+
 });
 
 function update() {
