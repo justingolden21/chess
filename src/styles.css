@@ -34,7 +34,8 @@
 		touch-action: none;
 	}
 	.board-b72b1 {
-		border: 0;
+		@apply border-4 border-bluegray-300;
+		box-shadow: 6px 6px 0px #334155; /*bluegray 700*/
 	}
 	
 	/* square colors */
@@ -66,10 +67,10 @@
 		font-weight: bold;
 	}
 	.white-1e1d7 {
-		@apply text-bluegray-600;
+		@apply text-bluegray-700;
 	}
 	.black-3c85d {
-		@apply text-bluegray-300;
+		@apply text-bluegray-50;
 	}
 
 	/*captured pieces*/

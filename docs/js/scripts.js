@@ -1,7 +1,7 @@
 let board = null;
 let game = new Chess();
 
-window.onload = ()=> {
+$(()=> {
 
 	$('#new-game-btn').click(()=> {
 		game = new Chess();
@@ -17,6 +17,39 @@ window.onload = ()=> {
 			board.orientation(game.turn()=='b'?'black':'white');
 		}
 	});
+	$('#notation-toggle').change(()=> {
+		$('.white-1e1d7, .black-3c85d').css('color', $('#notation-toggle').is(':checked') ? '' : 'transparent');
+	});
+	setTimeout(()=> $('#notation-toggle').change());
+
+	$('#copy-fen').click(()=> {
+		$('#fen').select();
+		document.execCommand('copy');
+	});
+	$('#copy-pgn').click(()=> {
+		$('#pgn').select();
+		document.execCommand('copy');
+	});
+
+	$('#load-btn').click(()=> {
+		let fenpgn = $('#load-input').val();
+		let success = false;
+		if(!game.validate_fen(fenpgn).valid) {
+			success = game.load_pgn(fenpgn);
+		} else {
+			success = game.load(fenpgn);
+		}
+	
+		console.log(fenpgn, success);
+		if(success) {
+			update();
+			$('#load-modal').css('display', 'none');
+			$('#load-error-text').html('');
+		} else {
+			$('#load-error-text').html('Failed to load FEN / PGN');
+		}
+	});
+	
 
 	function onDragStart(source, piece, position, orientation) {
 		// do not pick up pieces if game is over or not current player's piece
@@ -69,7 +102,7 @@ window.onload = ()=> {
 	// game.load('4r3/8/2p2PPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
 
 	update();
-}
+});
 
 function update() {
 	if($('#rotate-toggle').is(':checked')) {
@@ -84,9 +117,8 @@ function update() {
 	} else {
 		$('#state').html('');
 	}
-
-	$('#fen').html(game.fen());
-	$('#pgn').html(game.pgn());
+	$('#fen').val(game.fen());
+	$('#pgn').val(game.pgn());
 	$('#history').val(game.history().join('\n'));
 	$('#turn').html(game.turn()=='w'?'White':'Black');
 

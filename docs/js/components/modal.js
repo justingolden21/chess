@@ -8,14 +8,12 @@ window.addEventListener('load', ()=> {
 		modalBtn.onclick = function(event) {
 			event.preventDefault();
 			document.querySelector(modalBtn.getAttribute('href')).style.display = 'block';
-			console.log('hi');
 		}
 	}
 
 	for(let closeBtn of closeBtns) {
 		closeBtn.onclick = function(event) {
 			closeBtn.parentNode.parentNode.parentNode.style.display = 'none';
-			console.log('hi');
 		}
 	}
 
