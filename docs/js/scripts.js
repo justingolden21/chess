@@ -1,5 +1,6 @@
 let board = null;
 let game = new Chess();
+let undoStack = [];
 
 $(()=> {
 
@@ -8,7 +9,13 @@ $(()=> {
 		update();
 	});
 	$('#undo-btn').click(()=> {
+		let history = game.history();
+		undoStack.push(history[history.length-1]);
 		game.undo();
+		update();
+	});
+	$('#redo-btn').click(()=> {
+		game.move(undoStack.pop());
 		update();
 	});
 
@@ -82,6 +89,7 @@ $(()=> {
 	// update the board position after the piece snap
 	// for castling, en passant, pawn promotion
 	function onSnapEnd() {
+		undoStack = [];
 		update();
 	}
 
