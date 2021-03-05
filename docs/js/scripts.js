@@ -108,6 +108,9 @@ $(()=> {
 	// note: just make a new modal with code from https://chessboardjs.com/examples#2006
 	// inside and have a separate board for sandbox (maybe later load fen/pgn in sandbox? have input below and btn?)
 
+	$('#load-modal-btn').click(()=>setTimeout(()=>$('#load-input').focus(),50));
+	$('#load-input').keydown(e=> { if(e.which==13) $('#load-btn').click(); /* on enter*/ });
+
 });
 
 function update() {

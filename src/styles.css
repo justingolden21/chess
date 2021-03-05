@@ -25,6 +25,10 @@
 	p {
 		@apply leading-relaxed;
 	}
+
+	hr {
+		@apply border border-bluegray-300 m-4;
+	}
 }
 
 @layer components {
@@ -75,10 +79,10 @@
 
 	/*captured pieces*/
 	#captured-pieces {
-		@apply bg-bluegray-200;
+		@apply bg-bluegray-100;
 	}
 	.captured-piece {
-		@apply w-4 my-1 inline;
+		@apply h-8 my-1 inline;
 	}
 
 	/*! purgecss end ignore */
