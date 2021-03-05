@@ -108,6 +108,9 @@
 	button {
 		@apply bg-bluegray-200 hover:bg-bluegray-900 hover:text-white p-2 m-2 rounded;
 	}
+	button.active {
+		@apply bg-bluegray-900 text-white;
+	}
 	button svg {
 		display: inline;
 	}

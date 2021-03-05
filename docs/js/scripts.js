@@ -18,6 +18,16 @@ $(()=> {
 		game.move(undoStack.pop());
 		update();
 	});
+	$('#link-btn').click(()=> {
+		$('#link-btn').toggleClass('active');
+		const active = $('#link-btn').hasClass('active');
+		if(active) {
+			updateUrlParam(game.pgn());
+			copyText(window.location.href);
+		} else {
+			updateUrlParam('');
+		}
+	});
 
 	$('#rotate-toggle').change(()=> {
 		if($('#rotate-toggle').is(':checked')) {
@@ -112,7 +122,6 @@ $(()=> {
 		pieceTheme: 'img/pieces/{piece}.svg',
 	});
 
-	update();
 	$('#notation-toggle').change();
 });
 
@@ -135,6 +144,7 @@ function update() {
 	$('#history').val(game.history().join('\n'));
 	$('#turn').html(game.turn()=='w'?'White':'Black');
 	displayCapturedPieces();
+	if($('#link-btn').hasClass('active')) updateUrlParam(game.pgn());
 }
 
 function promote(source, target, promotion) {
