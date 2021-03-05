@@ -34,6 +34,7 @@
 @layer components {
 	/*! purgecss start ignore */
 
+	/*board*/
 	#board {
 		touch-action: none;
 	}
@@ -83,6 +84,15 @@
 	}
 	.captured-piece {
 		@apply h-8 my-1 inline;
+	}
+
+	/*spare pieces*/
+	.spare-pieces-7492f {
+		@apply my-2;
+	}
+	.spare-pieces-7492f .piece-417db {
+		display: inline;
+		@apply m-1;
 	}
 
 	/*! purgecss end ignore */

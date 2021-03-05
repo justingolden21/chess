@@ -78,6 +78,10 @@
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
 					Load FEN/PGN
 				</button>
+				<button class="modal-btn" href="#sandbox-modal">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+					Sandbox
+				</button>
 			<!-- </div> -->
 		<!-- </div> -->
 		<!-- todo: timer -->
@@ -90,7 +94,8 @@
 		<!-- resign/offer draw option, games history option, download games, share FEN buttons -->
 		<!-- fullscreen, contact, about, etc buttons -->
 		<!-- download, upload, copy, share, url param for FEN or PGN (position/entire game history) -->
-		<!-- todo: chess: click to move (not drag) redo option, modal scroll down problems, sandbox mode -->
+		<!-- todo: chess: click to move (not drag) redo option, modal scroll down problems -->
+		<!-- sandbox: import/export fen -->
 
 		<div id="settings-modal" class="modal">
 			<div class="modal-content">
@@ -135,6 +140,22 @@
 			</div>
 		</div>
 
+		<div id="sandbox-modal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="btn sm close hover-fill">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+					<h1>Chess Sandbox</h1>
+				</div>
+				<div class="modal-body">
+					<div id="sandbox-board" class="w-96 mx-auto m-4"></div>
+					<button id="sandbox-start-btn">Start</button>
+					<button id="sandbox-clear-btn">Clear</button>
+				</div>
+			</div>
+		</div>
+
 		<div id="modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -150,6 +171,7 @@
 
 	</section>
 		<script src="js/scripts.js"></script>
+		<script src="js/sandbox.js"></script>
 	<!-- <script src="js/engine.js"></script> -->
 	<script src="js/util.js"></script>
 	<script src="js/captured-pieces.js"></script>
