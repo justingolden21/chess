@@ -29,6 +29,9 @@
 	hr {
 		@apply border border-bluegray-300 m-4;
 	}
+	a {
+		@apply text-bluegray-500 hover:underline;
+	}
 }
 
 @layer components {
@@ -40,6 +43,7 @@
 	}
 	.board-b72b1 {
 		@apply border-4 border-bluegray-300;
+		/*@apply border-8 border-double border-bluegray-300;*/
 		box-shadow: 6px 6px 0px #334155; /*bluegray 700*/
 	}
 	
