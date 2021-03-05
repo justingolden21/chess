@@ -62,7 +62,6 @@ $(()=> {
 	$('#load-input').keydown(e=> { if(e.which==13) $('#load-btn').click(); /* on enter*/ });
 
 	$(document).keydown(e=> {
-		console.log(e.which);
 		if(e.which==37) $('#undo-btn').click() /* left */;
 		else if(e.which==39) $('#redo-btn').click() /* right */;
 	});
