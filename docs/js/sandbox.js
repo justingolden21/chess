@@ -28,4 +28,7 @@ $(()=> {
 		document.execCommand('copy');
 	});
 
+	// note: loads with notation on. can call $('#notation-toggle').change();
+	// after setting up sandboxBoard if want to default to off per checkbox state
+
 });

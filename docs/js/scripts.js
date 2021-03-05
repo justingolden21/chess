@@ -25,10 +25,11 @@ $(()=> {
 		} else {
 			board.orientation('white');
 		}
+		$('#notation-toggle').change();	
 	});
-	$('#notation-toggle').change(()=> {
-		$('.white-1e1d7, .black-3c85d').css('color', $('#notation-toggle').is(':checked') ? '' : 'transparent');
-	});
+	$('#notation-toggle').change(()=>
+		$('.white-1e1d7, .black-3c85d').css('color', $('#notation-toggle').is(':checked') ? '' : 'transparent')
+	);
 
 	$('#copy-fen').click(()=> {
 		$('#fen').select();
@@ -48,27 +49,26 @@ $(()=> {
 			success = game.load(fenpgn);
 		}
 	
-		console.log(fenpgn, success);
 		if(success) {
 			update();
 			$('#load-modal').css('display', 'none');
 			$('#load-error-text').html('');
 		} else {
-			$('#load-error-text').html('Failed to load FEN / PGN');
+			$('#load-error-text').html('Invalid FEN / PGN');
 		}
 	});
-
-	$('#load-modal-btn').click(()=>setTimeout(()=>$('#load-input').focus(),50));
-	$('#load-input').keydown(e=> { if(e.which==13) $('#load-btn').click(); /* on enter*/ });
-
-	$(document).keydown(e=> {
-
-		if(document.activeElement.tagName=='INPUT'||document.activeElement.tagName=='TEXTAREA') return;
-		if(e.which==37) $('#undo-btn').click() /* left */;
-		else if(e.which==39) $('#redo-btn').click() /* right */;
+	$('#load-modal-btn').click(()=>
+		setTimeout(()=>$('#load-input').focus(),50)
+	);
+	$('#load-input').keydown(e=> {
+		if(e.which==13) $('#load-btn').click(); /* enter*/
 	});
 
-	
+	$(document).keydown(e=> {
+		if(document.activeElement.tagName=='INPUT'||document.activeElement.tagName=='TEXTAREA') return;
+		if(e.which==37) $('#undo-btn').click(); /* left */
+		else if(e.which==39) $('#redo-btn').click(); /* right */
+	});
 
 	function onDragStart(source, piece, position, orientation) {
 		// do not pick up pieces if game is over or not current player's piece
@@ -101,7 +101,7 @@ $(()=> {
 		update();
 	}
 
-	let config = {
+	board = Chessboard('board', {
 		draggable: true,
 		position: 'start',
 		onDragStart: onDragStart,
@@ -110,20 +110,10 @@ $(()=> {
 		onMouseoutSquare: onMouseoutSquare,
 		onMouseoverSquare: onMouseoverSquare,
 		pieceTheme: 'img/pieces/{piece}.svg',
-
-		// todo: option for fun sandbox settings
-		// dropOffBoard: 'trash',
-		// sparePieces: true,
-	};
-	board = Chessboard('board', config);
-
-	// testing:
-	// game.load('4r3/8/2p2PPk/1p6/pP2p1R1/P1B5/2P2K2/3r4 w - - 1 45');
+	});
 
 	update();
-
 	$('#notation-toggle').change();
-
 });
 
 function update() {
@@ -139,11 +129,11 @@ function update() {
 	} else {
 		$('#state').html('');
 	}
+
 	$('#fen').val(game.fen());
 	$('#pgn').val(game.pgn());
 	$('#history').val(game.history().join('\n'));
 	$('#turn').html(game.turn()=='w'?'White':'Black');
-
 	displayCapturedPieces();
 }
 
