@@ -24,6 +24,7 @@ $(()=> {
 		if(active) {
 			updateUrlParam(game.pgn());
 			copyText(window.location.href);
+			showSnackbar('Copied link to game');
 		} else {
 			updateUrlParam('');
 		}
@@ -44,10 +45,12 @@ $(()=> {
 	$('#copy-fen').click(()=> {
 		$('#fen').select();
 		document.execCommand('copy');
+		showSnackbar('Copied FEN');
 	});
 	$('#copy-pgn').click(()=> {
 		$('#pgn').select();
 		document.execCommand('copy');
+		showSnackbar('Copied PGN');
 	});
 
 	$('#load-btn').click(()=> {

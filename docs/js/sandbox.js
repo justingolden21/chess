@@ -26,6 +26,7 @@ $(()=> {
 	$('#copy-sandbox-fen').click(()=> {
 		$('#sandbox-fen').select();
 		document.execCommand('copy');
+		showSnackbar('Copied FEN');
 	});
 
 	// note: loads with notation on. can call $('#notation-toggle').change();

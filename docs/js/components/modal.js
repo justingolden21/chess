@@ -1,8 +1,8 @@
 window.addEventListener('load', ()=> {
 
-	let modals = document.getElementsByClassName('modal');
-	let modalBtns = document.getElementsByClassName('modal-btn');
-	let closeBtns = document.getElementsByClassName('close');
+	const modals = document.getElementsByClassName('modal');
+	const modalBtns = document.getElementsByClassName('modal-btn');
+	const closeBtns = document.getElementsByClassName('close');
 
 	for(let modalBtn of modalBtns) {
 		modalBtn.onclick = function(event) {

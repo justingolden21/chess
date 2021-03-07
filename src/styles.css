@@ -1,4 +1,5 @@
 @import "./components/modal.css";
+@import "./components/snackbar.css";
 @import "./components/toggle.css";
 
 @tailwind base;

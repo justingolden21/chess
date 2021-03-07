@@ -1,0 +1,16 @@
+#snackbar {
+	visibility: hidden;
+	opacity: 0;
+	min-width: 16rem;
+	margin-left: -8rem;
+	bottom: 0;
+	left: 50%;
+	@apply bg-bluegray-900 text-white text-center rounded-lg p-4 fixed;
+	transition: opacity 0.5s, bottom 0.5s;
+}
+
+#snackbar.show {
+	visibility: visible;
+	opacity: 0.9;
+	bottom: 2rem;
+}
