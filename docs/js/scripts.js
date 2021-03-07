@@ -29,6 +29,10 @@ $(()=> {
 			updateUrlParam('');
 		}
 	});
+	$('#dark-btn').click(()=> {
+		$('#dark-btn').toggleClass('active');
+		$('html').toggleClass('dark');
+	});
 
 	$('#rotate-toggle').change(()=> {
 		if($('#rotate-toggle').is(':checked')) {

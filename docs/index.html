@@ -32,20 +32,13 @@
 	<link rel="stylesheet" href="css/styles.css">
 
 </head>
-<body class="text-center text-bluegray-900 m-2 md:m-4">
+<body class="text-center m-2 md:m-4">
 	<section>
-		<h1><small>pass the phone</small> <b>Chess</b></h1>
+		<h1 class="mb-2"><small>pass the phone</small> <b>Chess</b></h1>
 		<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
-			<div id="board" class="sm:col-span-2 md:col-span-3 w-96 mx-auto m-4"></div>
-			<div class="mx-4">
+			<div class="sm:col-span-2 md:col-span-3 w-96 mx-auto">
 				<p class="font-bold"><span id="turn"></span>'s turn</p>
-				<p id="state" class="font-bold"></p>
-				<label for="history" class="block mb-2 text-left">History:</label>
-				<textarea id="history" class="w-full" rows="8"></textarea>
-				<label class="block mb-2 text-left">Captured:</label>
-				<div id="captured-pieces" class="rounded p-4 my-2"></div>
-			</div>
-			<div class="sm:col-span-2 md:col-span-3 w-96 mx-auto m-4">
+				<div id="board" class="m-4"></div>
 				<button id="new-game-btn">
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
 					New game
@@ -58,14 +51,21 @@
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" transform="scale(-1,1)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
 					Redo
 				</button>
-				<button class="modal-btn" href="#settings-modal">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+				<button class="modal-btn sm" href="#settings-modal">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
 					Settings
 				</button>
-				<button id="link-btn">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+				<button id="link-btn" class="sm">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
 					Game Link
 				</button>
+			</div>
+			<div class="mx-4">
+				<p id="state" class="font-bold"></p>
+				<label class="block mb-2 text-left">Captured:</label>
+				<div id="captured-pieces" class="rounded p-4 my-2 bg-bluegray-200"></div>
+				<label for="history" class="block mb-2 text-left">History:</label>
+				<textarea id="history" class="w-full" rows="8"></textarea>
 			</div>
 		</div>
 		<hr>
@@ -123,6 +123,11 @@
 						<label class="toggle-bg"></label>
 					</div>
 					<label for="notation-toggle" class="toggle-label">Display board notation</label>
+					<br>
+					<button id="dark-btn">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+						Dark Mode
+					</button>
 				</div>
 			</div>
 		</div>

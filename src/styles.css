@@ -33,6 +33,12 @@
 	a {
 		@apply text-bluegray-500 hover:underline;
 	}
+	html {
+		@apply bg-bluegray-50 text-bluegray-900;
+	}
+	html.dark {
+		@apply bg-bluegray-900 text-bluegray-50;
+	}
 }
 
 @layer components {
@@ -84,9 +90,6 @@
 	}
 
 	/*captured pieces*/
-	#captured-pieces {
-		@apply bg-bluegray-100;
-	}
 	.captured-piece {
 		@apply h-8 my-1 inline;
 	}
@@ -103,11 +106,17 @@
 	/*! purgecss end ignore */
 
 	/* inputs, buttons */
+	button, input[type=text], textarea {
+		@apply text-bluegray-800;
+	}
 	input[type=text], textarea {
 		@apply border-2 border-bluegray-300 p-2;
 	}
 	button {
 		@apply bg-bluegray-200 hover:bg-bluegray-900 hover:text-white p-2 m-2 rounded;
+	}
+	button.sm {
+		@apply p-1 m-1 text-sm;
 	}
 	button.active {
 		@apply bg-bluegray-900 text-white;
