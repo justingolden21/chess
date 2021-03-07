@@ -10,6 +10,7 @@ $(()=> {
 	});
 	$('#undo-btn').click(()=> {
 		let history = game.history();
+		if(history.length==0) return;
 		undoStack.push(history[history.length-1]);
 		game.undo();
 		update();
