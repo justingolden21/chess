@@ -1,0 +1,2 @@
+url params for pgn or fen
+qr code (can share) to link to a game position or game
