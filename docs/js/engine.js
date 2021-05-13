@@ -14,6 +14,7 @@ $(()=> {
 		const fen = $('#engine-fen-input').val();
 		engine.postMessage('position fen ' + fen);
 		engine.postMessage('go depth ' + depth);
+		engine.postMessage('eval');
 	});
 
 });
