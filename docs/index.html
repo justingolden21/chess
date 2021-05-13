@@ -90,6 +90,10 @@
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
 			Sandbox
 		</button>
+		<button class="modal-btn" href="#engine-modal">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+			Engine
+		</button>
 		<!-- todo: timer -->
 		<!-- btn for how to play -->
 		<!-- add puzzles? -->
@@ -119,7 +123,7 @@
 					<label for="rotate-toggle" class="toggle-label">Rotate board after each move</label>
 					<br>
 					<div class="toggle-container">
-						<input type="checkbox" id="notation-toggle" class="toggle-checkbox"/>
+						<input checked type="checkbox" id="notation-toggle" class="toggle-checkbox"/>
 						<label class="toggle-bg"></label>
 					</div>
 					<label for="notation-toggle" class="toggle-label">Display board notation</label>
@@ -174,6 +178,26 @@
 			</div>
 		</div>
 
+		<div id="engine-modal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="btn sm close hover-fill">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+					</button>
+					<h1>Stockfish Engine Analysis</h1>
+				</div>
+				<div class="modal-body">
+					<label for="engine-depth-input">Engine Depth:</label>
+					<input id="engine-depth-input" type="number" value="10" min="1" max="20">
+					<br>
+					<label for="engine-fen-input">FEN:</label>
+					<input id="engine-fen-input" type="text" value="" class="w-full">
+					<button id="engine-analysis-btn" class="ml-0 mt-4">Analyze</button>
+					<p id="engine-output" class="text-sm"></p>
+				</div>
+			</div>
+		</div>
+
 		<div id="modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -196,7 +220,7 @@
 	<script src="js/scripts.js"></script>
 	<script src="js/sandbox.js"></script>
 	<script src="js/urlparam.js"></script>
-	<!-- <script src="js/engine.js"></script> -->
+	<script src="js/engine.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/captured-pieces.js"></script>
 	<script src="js/hover-moves.js"></script>

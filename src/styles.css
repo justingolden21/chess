@@ -109,7 +109,7 @@
 	button, input[type=text], textarea {
 		@apply text-bluegray-800;
 	}
-	input[type=text], textarea {
+	input[type=text], input[type=number], textarea {
 		@apply border-2 border-bluegray-300 p-2;
 	}
 	button {
