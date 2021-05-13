@@ -1,2 +1,22 @@
+timer
+btn for how to play
+add puzzles?
+resign/offer draw option, games history option, download games, share FEN buttons
+fullscreen, contact, about, etc buttons
+download, upload, copy, share PGN
+
+chess: click to move (not drag) modal scroll down problems
+later: modes: 960, bughouse
+modal explaining how to use website, what fen/pgn is, arrow keys and shortcuts
+keep track of multiple games/history, import/export, maybe save to account?
+stockfish: show best move for black, show best move for white toggles, option to play against computer, load position and show the +-, show the best moves
+maybe: options for board and piece colors/aesthetic
+
 url params for pgn or fen
 qr code (can share) to link to a game position or game
+export image (or gif) of gameboard (or game)
+convert pgn to multiple fens
+
+book of openings using https://www.chess.com/openings
+book of famous games
+add your own "books" by adding fen or pgn, adding recent game, removing, naming, and sorting games/positions, add multiple books (books are like folders, contain either games (pgn) or positions (fen) ) share books with others, download and upload as txt files
