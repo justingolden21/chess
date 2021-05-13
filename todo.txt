@@ -20,3 +20,5 @@ convert pgn to multiple fens
 book of openings using https://www.chess.com/openings
 book of famous games
 add your own "books" by adding fen or pgn, adding recent game, removing, naming, and sorting games/positions, add multiple books (books are like folders, contain either games (pgn) or positions (fen) ) share books with others, download and upload as txt files
+
+make an account and store your games, play online
