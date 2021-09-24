@@ -156,6 +156,10 @@ $(() => {
 	});
 
 	$('#notation-toggle').change();
+
+	loadHistory();
+
+	$('#clear-history-list-btn').click(clearHistory);
 });
 
 function update() {
@@ -180,7 +184,6 @@ function update() {
 		$('#state').html(state);
 
 		addHistory(game.pgn());
-		displayHistory();
 	} else {
 		$('#state').html('');
 	}
