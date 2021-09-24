@@ -1,220 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Chess</title>
-	<meta charset="utf-8">
-	<meta name="title=" content="Chess">
-	<meta name="robots" content="index, follow">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="a simple chess project using chess.js and chessboard.js">
-	<meta name="keywords" content="">
-	<link rel="shortcut icon" href="img/icon.svg">
+    <title>Chess</title>
+    <meta charset="utf-8">
+    <meta name="title=" content="Chess">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="a simple chess project using chess.js and chessboard.js">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="img/icon.svg">
 
-	<link rel="stylesheet"
-		href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
-		integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
-		crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-		integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
-		crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
-		integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"
-		integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz"
-		crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"
+        integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz"
+        crossorigin="anonymous"></script>
 
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-		crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body class="text-center m-2 md:m-4">
-	<section>
-		<h1 class="mb-2"><small>pass the phone</small> <b>Chess</b></h1>
-		<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
-			<div class="sm:col-span-2 md:col-span-3 w-96 mx-auto">
-				<p class="font-bold"><span id="turn"></span>'s turn</p>
-				<div id="board" class="m-4"></div>
-				<button id="new-game-btn">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-					New game
-				</button>
-				<button id="undo-btn">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
-					Undo
-				</button>
-				<button id="redo-btn">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" transform="scale(-1,1)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
-					Redo
-				</button>
-				<button class="modal-btn sm" href="#settings-modal">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-					Settings
-				</button>
-				<button id="link-btn" class="sm">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-					Game Link
-				</button>
-			</div>
-			<div class="mx-4">
-				<p id="state" class="font-bold"></p>
-				<label class="block mb-2 text-left">Captured:</label>
-				<div id="captured-pieces" class="rounded p-4 my-2 bg-bluegray-200"></div>
-				<label for="history" class="block mb-2 text-left">History:</label>
-				<textarea id="history" class="w-full" rows="8"></textarea>
-			</div>
-		</div>
-		<hr>
+    <section>
+        <h1 class="mb-2"><small>pass the phone</small> <b>Chess</b></h1>
+        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+            <div class="sm:col-span-2 md:col-span-3 w-96 mx-auto">
+                <p class="font-bold"><span id="turn"></span>'s turn</p>
+                <div id="board" class="m-4"></div>
+                <button id="new-game-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                    New game
+                </button>
+                <button id="undo-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                    </svg>
+                    Undo
+                </button>
+                <button id="redo-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" transform="scale(-1,1)">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                    </svg>
+                    Redo
+                </button>
+                <button class="modal-btn sm" href="#settings-modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Settings
+                </button>
+                <button id="link-btn" class="sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                        </path>
+                    </svg>
+                    Game Link
+                </button>
+            </div>
+            <div class="mx-4">
+                <p id="state" class="font-bold"></p>
+                <label class="block mb-2 text-left">Captured:</label>
+                <div id="captured-pieces" class="rounded p-4 my-2 bg-bluegray-200"></div>
+                <label for="history" class="block mb-2 text-left">History:</label>
+                <textarea id="history" class="w-full" rows="8"></textarea>
+            </div>
+        </div>
+        <hr>
 
-		<label for="fen" class="font-bold mr-2">FEN:</label>
-		<input id="fen" type="text" class="w-48 sm:w-96 text-sm" spellcheck="false">
-		<button id="copy-fen">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-		</button>
-		<br>
-		<label for="fen" class="font-bold mr-2">PGN:</label>
-		<input id="pgn" type="text" class="w-48 sm:w-96 text-sm" spellcheck="false">
-		<button id="copy-pgn">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-		</button>
-		<br>
-		<button id="load-modal-btn" class="modal-btn" href="#load-modal">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-			Load FEN/PGN
-		</button>
-		<button class="modal-btn" href="#sandbox-modal">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-			Sandbox
-		</button>
-		<button class="modal-btn" href="#engine-modal">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-			Engine
-		</button>
+        <label for="fen" class="font-bold mr-2">FEN:</label>
+        <input id="fen" type="text" class="w-48 sm:w-96 text-sm" spellcheck="false">
+        <button id="copy-fen">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+            </svg>
+        </button>
+        <br>
+        <label for="fen" class="font-bold mr-2">PGN:</label>
+        <input id="pgn" type="text" class="w-48 sm:w-96 text-sm" spellcheck="false">
+        <button id="copy-pgn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+            </svg>
+        </button>
+        <br>
+        <button id="load-modal-btn" class="modal-btn" href="#load-modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4">
+                </path>
+            </svg>
+            Load FEN/PGN
+        </button>
+        <button class="modal-btn" href="#sandbox-modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                </path>
+            </svg>
+            Sandbox
+        </button>
+        <button class="modal-btn" href="#engine-modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                </path>
+            </svg>
+            Engine
+        </button>
 
-		<div id="settings-modal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="btn sm close hover-fill">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-					<h1>Settings</h1>
-				</div>
-				<div class="modal-body">
-					<h2 class="tracking-wider mb-2">Display</h2>
-					<div class="toggle-container">
-						<input type="checkbox" id="rotate-toggle" class="toggle-checkbox"/>
-						<label class="toggle-bg"></label>
-					</div>
-					<label for="rotate-toggle" class="toggle-label">Rotate board after each move</label>
-					<br>
-					<div class="toggle-container">
-						<input checked type="checkbox" id="notation-toggle" class="toggle-checkbox"/>
-						<label class="toggle-bg"></label>
-					</div>
-					<label for="notation-toggle" class="toggle-label">Display board notation</label>
-					<br>
-					<button id="dark-btn">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-						Dark Mode
-					</button>
-				</div>
-			</div>
-		</div>
+        <div id="settings-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1>Settings</h1>
+                </div>
+                <div class="modal-body">
+                    <h2 class="tracking-wider mb-2">Display</h2>
+                    <div class="toggle-container">
+                        <input type="checkbox" id="rotate-toggle" class="toggle-checkbox" />
+                        <label class="toggle-bg"></label>
+                    </div>
+                    <label for="rotate-toggle" class="toggle-label">Rotate board after each move</label>
+                    <br>
+                    <div class="toggle-container">
+                        <input checked type="checkbox" id="notation-toggle" class="toggle-checkbox" />
+                        <label class="toggle-bg"></label>
+                    </div>
+                    <label for="notation-toggle" class="toggle-label">Display board notation</label>
+                    <br>
+                    <button id="dark-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                            </path>
+                        </svg>
+                        Dark Mode
+                    </button>
+                </div>
+            </div>
+        </div>
 
-		<div id="load-modal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="btn sm close hover-fill">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-					<h1>Load FEN / PGN</h1>
-				</div>
-				<div class="modal-body">
-					<label for="load-input" class="font-bold mr-2">Load FEN / PGN:</label>
-					<textarea id="load-input" class="my-2"></textarea>
-					<br>
-					<button id="load-btn">Load</button>
-					<p id="load-error-text"></p>
-				</div>
-			</div>
-		</div>
+        <div id="load-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1>Load FEN / PGN</h1>
+                </div>
+                <div class="modal-body">
+                    <label for="load-input" class="font-bold mr-2">Load FEN / PGN:</label>
+                    <textarea id="load-input" class="my-2"></textarea>
+                    <br>
+                    <button id="load-btn">Load</button>
+                    <p id="load-error-text"></p>
+                </div>
+            </div>
+        </div>
 
-		<div id="sandbox-modal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="btn sm close hover-fill">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-					<h1>Chess Sandbox</h1>
-				</div>
-				<div class="modal-body">
-					<div id="sandbox-board" class="w-96 mx-auto m-4"></div>
-					<button id="sandbox-start-btn">Start</button>
-					<button id="sandbox-clear-btn">Clear</button>
-					<input id="sandbox-fen" class="my-2" type="text">
-					<button id="copy-sandbox-fen">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-					</button>
-					<hr>
-					<label for="sandbox-load-input" class="font-bold mr-2">Load FEN:</label>
-					<textarea id="sandbox-load-input" class="my-2"></textarea>
-					<button id="sandbox-load-btn">Load</button>
-				</div>
-			</div>
-		</div>
+        <div id="sandbox-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1>Chess Sandbox</h1>
+                </div>
+                <div class="modal-body">
+                    <div id="sandbox-board" class="w-96 mx-auto m-4"></div>
+                    <button id="sandbox-start-btn">Start</button>
+                    <button id="sandbox-clear-btn">Clear</button>
+                    <input id="sandbox-fen" class="my-2" type="text">
+                    <button id="copy-sandbox-fen">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </button>
+                    <hr>
+                    <label for="sandbox-load-input" class="font-bold mr-2">Load FEN:</label>
+                    <textarea id="sandbox-load-input" class="my-2"></textarea>
+                    <button id="sandbox-load-btn">Load</button>
+                </div>
+            </div>
+        </div>
 
-		<div id="engine-modal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="btn sm close hover-fill">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-					<h1>Stockfish Engine Analysis</h1>
-				</div>
-				<div class="modal-body">
-					<label for="engine-depth-input">Engine Depth:</label>
-					<input id="engine-depth-input" type="number" value="10" min="1" max="20">
-					<br>
-					<label for="engine-fen-input">FEN:</label>
-					<input id="engine-fen-input" type="text" value="" class="w-full">
-					<button id="engine-analysis-btn" class="ml-0 mt-4">Analyze</button>
-					<p id="engine-output" class="text-sm"></p>
-				</div>
-			</div>
-		</div>
+        <div id="engine-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1>Stockfish Engine Analysis</h1>
+                </div>
+                <div class="modal-body">
+                    <label for="engine-depth-input">Engine Depth:</label>
+                    <input id="engine-depth-input" type="number" value="10" min="1" max="20">
+                    <br>
+                    <label for="engine-fen-input">FEN:</label>
+                    <input id="engine-fen-input" type="text" value="" class="w-full">
+                    <button id="engine-analysis-btn" class="ml-0 mt-4">Analyze</button>
+                    <p id="engine-output" class="text-sm"></p>
+                </div>
+            </div>
+        </div>
 
-		<div id="modal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button class="btn sm close hover-fill">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-					</button>
-					<h1 id="modal-title"></h1>
-				</div>
-				<div id="modal-body" class="modal-body">
-				</div>
-			</div>
-		</div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1 id="modal-title"></h1>
+                </div>
+                <div id="modal-body" class="modal-body">
+                </div>
+            </div>
+        </div>
 
-		<div id="snackbar"></div>
+        <div id="snackbar"></div>
 
-	</section>
-	<footer>
-		<p>Made by <a href="https://justingolden.me/" target="_blank">Justin Golden</a>. View my <a href="https://justingolden.me/projects" target="_blank">other projects</a></p>
-	</footer>
-	<script src="js/scripts.js"></script>
-	<script src="js/sandbox.js"></script>
-	<script src="js/urlparam.js"></script>
-	<script src="js/engine.js"></script>
-	<script src="js/util.js"></script>
-	<script src="js/captured-pieces.js"></script>
-	<script src="js/hover-moves.js"></script>
-	<script src="js/components/modal.js"></script>
-	<script src="js/components/snackbar.js"></script>
-	<script src="js/components/toggle.js"></script>
+    </section>
+    <footer>
+        <p>Made by <a href="https://justingolden.me/" target="_blank">Justin Golden</a>. View my <a
+                href="https://justingolden.me/projects" target="_blank">other projects</a></p>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <script src="js/sandbox.js"></script>
+    <script src="js/urlparam.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/captured-pieces.js"></script>
+    <script src="js/hover-moves.js"></script>
+    <script src="js/components/modal.js"></script>
+    <script src="js/components/snackbar.js"></script>
+    <script src="js/components/toggle.js"></script>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
-@import "./components/modal.css";
-@import "./components/snackbar.css";
-@import "./components/toggle.css";
+@import './components/modal.css';
+@import './components/snackbar.css';
+@import './components/toggle.css';
 
 @tailwind base;
 @tailwind components;
@@ -13,7 +13,8 @@
 	::selection {
 		@apply bg-bluegray-100;
 	}
-	*:focus, button:focus {
+	*:focus,
+	button:focus {
 		@apply outline-none ring-2 ring-bluegray-400;
 	}
 
@@ -53,7 +54,7 @@
 		/*@apply border-8 border-double border-bluegray-300;*/
 		box-shadow: 6px 6px 0px #334155; /*bluegray 700*/
 	}
-	
+
 	/* square colors */
 	.white-1e1d7 {
 		@apply bg-bluegray-300;
@@ -64,7 +65,7 @@
 
 	/*pieces*/
 	.piece-417db {
-/*		position: absolute;
+		/*		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
@@ -73,13 +74,15 @@
 	}
 
 	/*highlight color*/
-	.highlight1-32417, .highlight2-9c5d2 {
+	.highlight1-32417,
+	.highlight2-9c5d2 {
 		box-shadow: none;
 		border: 2px solid #fff;
 	}
 
 	/*notation*/
-	.white-1e1d7, .black-3c85d {
+	.white-1e1d7,
+	.black-3c85d {
 		font-weight: bold;
 	}
 	.white-1e1d7 {
@@ -106,10 +109,14 @@
 	/*! purgecss end ignore */
 
 	/* inputs, buttons */
-	button, input[type=text], textarea {
+	button,
+	input[type='text'],
+	textarea {
 		@apply text-bluegray-800;
 	}
-	input[type=text], input[type=number], textarea {
+	input[type='text'],
+	input[type='number'],
+	textarea {
 		@apply border-2 border-bluegray-300 p-2;
 	}
 	button {
@@ -126,14 +133,18 @@
 	}
 }
 
-@media (min-width: 640px) { /* sm */
+@media (min-width: 640px) {
+	/* sm */
 }
 
-@media (min-width: 768px) { /* md */
+@media (min-width: 768px) {
+	/* md */
 }
 
-@media (min-width: 1024px) { /* lg */
+@media (min-width: 1024px) {
+	/* lg */
 }
 
-@media (min-width: 1280px) { /* xl */
+@media (min-width: 1280px) {
+	/* xl */
 }

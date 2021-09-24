@@ -5,6 +5,9 @@ resign/offer draw option, games history option, download games, share FEN button
 fullscreen, contact, about, etc buttons
 download, upload, copy, share PGN
 
+prettier, eslint, airbnb
+umbrella js instead of jquery
+
 chess: click to move (not drag) modal scroll down problems
 later: modes: 960, bughouse
 modal explaining how to use website, what fen/pgn is, arrow keys and shortcuts

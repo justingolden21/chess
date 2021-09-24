@@ -23,10 +23,22 @@
 }
 
 @keyframes animateTop {
-	from{top:-240px; opacity:0;}
-	to{top:0; opacity:1;}
+	from {
+		top: -240px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
 }
 @-webkit-keyframes animateTop {
-	from{top:-240px; opacity:0;}
-	to{top:0; opacity:1;}
+	from {
+		top: -240px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
 }

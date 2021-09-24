@@ -14,17 +14,18 @@ First time setup: `npm install`
 
 Development: `npm run dev`
 
+Serve: `npm run serve`
+
 Production: `npm run build`
 
 ### Links
 
-
-- This repo: https://github.com/justingolden21/chess
+-   This repo: https://github.com/justingolden21/chess
 
 <hr>
 
-- My website: https://justingolden.me
+-   My website: https://justingolden.me
 
-- My repos: https://github.com/justingolden21
+-   My repos: https://github.com/justingolden21
 
-- Contact me: contact@justingolden.me
+-   Contact me: contact@justingolden.me

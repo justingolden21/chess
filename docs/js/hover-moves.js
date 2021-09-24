@@ -7,14 +7,17 @@ function removeGreySquares() {
 
 function greySquare(square) {
 	let $square = $('#board .square-' + square);
-	$square.css('background', $square.hasClass('black-3c85d') ? blackSquareGrey : whiteSquareGrey);
+	$square.css(
+		'background',
+		$square.hasClass('black-3c85d') ? blackSquareGrey : whiteSquareGrey
+	);
 }
 
 function onMouseoverSquare(square, piece) {
 	// get list of possible moves for this square
 	let moves = game.moves({
 		square: square,
-		verbose: true
+		verbose: true,
 	});
 
 	// exit if there are no moves available for this square
@@ -24,7 +27,7 @@ function onMouseoverSquare(square, piece) {
 	greySquare(square);
 
 	// highlight the possible squares for this piece
-	for(let i = 0; i < moves.length; i++) {
+	for (let i = 0; i < moves.length; i++) {
 		greySquare(moves[i].to);
 	}
 }
