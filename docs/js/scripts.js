@@ -65,6 +65,7 @@ $(() => {
 		let success = false;
 		if (!game.validate_fen(fenpgn).valid) {
 			success = game.load_pgn(fenpgn);
+			loadPlayerNames();
 		} else {
 			success = game.load(fenpgn);
 		}
@@ -166,7 +167,14 @@ $(() => {
 	// in both cases, we want to skip loading the pgn, hence the check if the local storage item is falsey
 	// rather than a direct comparison to null
 	const currentGame = localStorage.getItem('currentGame');
-	if (currentGame) game.load_pgn(currentGame);
+	if (currentGame) {
+		game.load_pgn(currentGame);
+		loadPlayerNames();
+	}
+
+	// keyup so it runs after the input has changed
+	$('#white-player-name').keyup(setUpdatePlayerNames);
+	$('#black-player-name').keyup(setUpdatePlayerNames);
 });
 
 function update() {
@@ -174,6 +182,8 @@ function update() {
 		board.orientation(game.turn() == 'b' ? 'black' : 'white');
 	}
 	board.position(game.fen());
+
+	setPlayerNames();
 
 	if (game.game_over()) {
 		const state = game.in_checkmate()
@@ -213,4 +223,31 @@ function promote(source, target, promotion) {
 		promotion: promotion,
 	});
 	update();
+}
+
+function setPlayerNames() {
+	const prevWhitePlayerName = game.header()['White'];
+	const prevBlackPlayerName = game.header()['Black'];
+
+	const whitePlayerName = $('#white-player-name').val();
+	const blackPlayerName = $('#black-player-name').val();
+
+	// check if name is blank, unless name exists in which case allow blank name to delete old name
+	if (prevWhitePlayerName || whitePlayerName != '')
+		game.header('White', whitePlayerName);
+	if (prevBlackPlayerName || blackPlayerName != '')
+		game.header('Black', blackPlayerName);
+}
+
+function setUpdatePlayerNames() {
+	setPlayerNames();
+	$('#pgn').val(game.pgn());
+	localStorage.setItem('currentGame', game.pgn());
+}
+
+function loadPlayerNames() {
+	const whitePlayerName = game.header()['White'];
+	const blackPlayerName = game.header()['Black'];
+	if (whitePlayerName) $('#white-player-name').val(whitePlayerName);
+	if (blackPlayerName) $('#black-player-name').val(blackPlayerName);
 }

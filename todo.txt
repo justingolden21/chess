@@ -5,6 +5,13 @@ resign/offer draw option, games history option, download games, share FEN button
 fullscreen, contact, about, etc buttons
 download, upload, copy, share PGN
 
+what if game is in both local storage and url, which should be loaded? popup asking to chose?
+setting to auto delete names after game ends? eh
+
+ability to edit and delete individual games in history? js framework?
+
+add game to history when new game is clicked if at least one move was played? option to turn off adding incomplete games?
+
 prettier, eslint, airbnb
 umbrella js instead of jquery
 

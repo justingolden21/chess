@@ -25,7 +25,7 @@ function addHistory(pgn) {
 function displayHistory() {
 	$('#history-list').html(
 		historyList
-			.map((pgn, idx) => 'Game' + (idx + 1) + ':<br> ' + pgn)
+			.map((pgn, idx) => 'Game ' + (idx + 1) + ':<br> ' + pgn)
 			.join('<br>')
 	);
 }
