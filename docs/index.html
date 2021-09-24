@@ -73,6 +73,14 @@
                     </svg>
                     Settings
                 </button>
+                <button class="modal-btn sm" href="#history-modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    History
+                </button>
                 <button id="link-btn" class="sm">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -182,6 +190,24 @@
             </div>
         </div>
 
+        <div id="history-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn sm close hover-fill">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <h1>History</h1>
+                </div>
+                <div class="modal-body">
+                    <div id="history-list"></div>
+                </div>
+            </div>
+        </div>
+
         <div id="load-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -286,6 +312,7 @@
                 href="https://justingolden.me/projects" target="_blank">other projects</a></p>
     </footer>
     <script src="js/scripts.js"></script>
+    <script src="js/history.js"></script>
     <script src="js/sandbox.js"></script>
     <script src="js/urlparam.js"></script>
     <script src="js/engine.js"></script>

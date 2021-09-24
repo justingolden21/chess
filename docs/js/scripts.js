@@ -178,6 +178,9 @@ function update() {
 			: 'Game Over';
 		openModal('Game Over', state);
 		$('#state').html(state);
+
+		addHistory(game.pgn());
+		displayHistory();
 	} else {
 		$('#state').html('');
 	}
