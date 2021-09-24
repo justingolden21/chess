@@ -160,6 +160,13 @@ $(() => {
 	loadHistory();
 
 	$('#clear-history-list-btn').click(clearHistory);
+
+	// note that '' is falsey and can be set as the game's pgn, but is an invalid pgn to load
+	// null is falsey and returned from local storage if no item is present
+	// in both cases, we want to skip loading the pgn, hence the check if the local storage item is falsey
+	// rather than a direct comparison to null
+	const currentGame = localStorage.getItem('currentGame');
+	if (currentGame) game.load_pgn(currentGame);
 });
 
 function update() {
@@ -194,6 +201,8 @@ function update() {
 	$('#turn').html(game.turn() == 'w' ? 'White' : 'Black');
 	displayCapturedPieces();
 	if ($('#link-btn').hasClass('active')) updateUrlParam(game.pgn());
+
+	localStorage.setItem('currentGame', game.pgn());
 }
 
 function promote(source, target, promotion) {
